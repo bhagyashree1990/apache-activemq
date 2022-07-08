@@ -4,3 +4,4 @@
 
 1. [Initial Configuration](https://activemq.apache.org/initial-configuration)
 2. [Hello World](https://activemq.apache.org/hello-world)
+3. [ActiveMQ with Spring Boot](https://youtu.be/rupsZ27Ncvo)
