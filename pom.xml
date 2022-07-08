@@ -10,27 +10,62 @@
 
     <properties>
         <maven.compiler.release>17</maven.compiler.release>
+        <lombok.version>1.18.24</lombok.version>
     </properties>
 
-    <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.apache.activemq/activemq-all -->
-        <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-all</artifactId>
-            <version>5.17.1</version>
-        </dependency>
-        <!-- java.lang.NoClassDefFoundError: org/apache/logging/log4j/spi/AbstractLoggerAdapter -->
-        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.18.0</version>
-        </dependency>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.0</version>
+    </parent>
 
+
+    <dependencies>
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.13.3</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-activemq</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>1.6.9</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.morningstar.indexes.ActiveMQApplication</mainClass>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+
+            </plugin>
+        </plugins>
+    </build>
 </project>
